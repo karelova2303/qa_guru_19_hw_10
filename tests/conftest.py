@@ -26,6 +26,7 @@ def setup_browser(request):
     )
 
     browser.config.driver = driver
+    browser.config.base_url = 'https://github.com'
 
     yield browser
 
@@ -33,4 +34,3 @@ def setup_browser(request):
     attach.add_logs(browser)
     attach.add_html(browser)
     attach.add_video(browser)
-

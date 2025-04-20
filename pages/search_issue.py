@@ -2,12 +2,13 @@ import allure
 from selene import browser, by, be
 from selene.support.shared.jquery_style import s
 
+
 # Класс для теста №3
 class Issue:
 
     @allure.step('Открываем главную страницу GitHub')
     def open_main_page(self):
-        browser.open('https://github.com')
+        browser.open('/')
 
     @allure.step(f'Ищем репозиторий')
     def search_for_repository(self, repository):
