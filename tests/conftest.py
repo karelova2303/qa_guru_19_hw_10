@@ -32,6 +32,3 @@ def setup_browser(request):
     attach.add_html(browser)
     attach.add_video(browser)
 
-@pytest.fixture(scope='function')
-def browser_option(setup_browser):
-    browser.config.base_url = 'https://github.com'

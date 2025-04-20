@@ -7,7 +7,7 @@ class Issue:
 
     @allure.step('Открываем главную страницу GitHub')
     def open_main_page(self):
-        browser.open('/')
+        browser.open('https://github.com')
 
     @allure.step(f'Ищем репозиторий')
     def search_for_repository(self, repository):

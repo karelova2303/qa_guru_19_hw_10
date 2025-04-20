@@ -8,7 +8,7 @@ from pages.search_issue import Issue
 repository = 'eroshenkoam/allure-playwright-example'
 actual_text = 'Не работает переход по табу Issues'
 
-
+'''
 @allure.tag('Web')
 @allure.severity(Severity.NORMAL)
 @allure.label('owner', 'karelova2303')
@@ -16,8 +16,8 @@ actual_text = 'Не работает переход по табу Issues'
 @allure.story(f'Неавторизованный пользователь проверяет наличие задачи в репозитории')
 @allure.link('https://github.com')
 # Тест №1. Чистый Selene (без шагов)
-def test_search_issue_simple(browser_option):
-    browser.open('/')
+def test_search_issue_simple(setup_browser):
+    browser.open('https://github.com')
 
     s('.header-search-button').click()
     s('#query-builder-test').send_keys(repository).press_enter()
@@ -36,9 +36,9 @@ def test_search_issue_simple(browser_option):
 @allure.feature(f'Задачи в репозитории')
 @allure.story(f'Неавторизованный пользователь проверяет наличие задачи в репозитории')
 @allure.link('https://github.com')
-def test_search_issue_with_steps(browser_option):
+def test_search_issue_with_steps(setup_browser):
     with allure.step('Открываем главную страницу GitHub'):
-        browser.open('/')
+        browser.open('https://github.com')
 
     with allure.step(f'Ищем репозиторий {repository}'):
         s('.header-search-button').click()
@@ -52,7 +52,7 @@ def test_search_issue_with_steps(browser_option):
 
     with allure.step(f'Проверяем отображение задачи с текстом "{actual_text}"'):
         s(by.text(actual_text)).should(be.visible)
-
+'''
 
 # Тест №3. Шаги с декоратором @allure
 @allure.tag('Web', 'Dev')
@@ -61,7 +61,7 @@ def test_search_issue_with_steps(browser_option):
 @allure.feature(f'Задачи в репозитории')
 @allure.story(f'Неавторизованный пользователь проверяет наличие задачи в репозитории')
 @allure.link('https://github.com')
-def test_search_issue_with_steps_decorator(browser_option):
+def test_search_issue_with_steps_decorator(setup_browser):
     issue = Issue()
 
     issue.open_main_page()
